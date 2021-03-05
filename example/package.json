@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "colorsys": "^1.0.22",
-    "lodash.debounce": "^4.0.8",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-reanimated": "^1.13.2",
