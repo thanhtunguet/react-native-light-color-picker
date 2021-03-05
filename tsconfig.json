@@ -2,7 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "react-native-light-color-picker": ["./src/index"]
+      "react-native-light-color-picker": ["./src/index"],
+      "lib/*": [
+        "./src/*"
+      ]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -21,7 +24,7 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "target": "esnext"
   }
 }

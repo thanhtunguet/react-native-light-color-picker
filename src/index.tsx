@@ -1,5 +1,2 @@
-export default {
-  multiply(a: number, b: number) {
-    return Promise.resolve(a * b);
-  },
-};
+export { default } from './LightColorPicker';
+export type { LightColorPickerProps } from './LightColorPickerProps';

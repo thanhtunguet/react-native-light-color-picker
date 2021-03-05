@@ -5,7 +5,7 @@ Light color picker for React Native
 ## Installation
 
 ```sh
-npm install react-native-light-color-picker
+yarn add react-native-light-color-picker
 ```
 
 ## Usage
@@ -15,7 +15,37 @@ import LightColorPicker from "react-native-light-color-picker";
 
 // ...
 
-const result = await LightColorPicker.multiply(3, 7);
+export default function App() {
+  const [color, setColor] = React.useState<string>('#FFFFFF');
+
+  return (
+    <View style={styles.container}>
+      <LightColorPicker onColorChange={setColor} />
+      <View
+        style={[
+          styles.demo,
+          {
+            backgroundColor: color,
+            zIndex: 0,
+          },
+        ]}
+      />
+    </View>
+  );
+}
+
+```
+
+### Props
+
+```ts
+export interface LightColorPickerProps {
+  color?: string;
+
+  onColorChange?(color: string);
+
+  onColorChangeCompleted?(color: string);
+}
 ```
 
 ## Contributing

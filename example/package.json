@@ -9,13 +9,18 @@
     "start": "react-native start"
   },
   "dependencies": {
+    "colorsys": "^1.0.22",
+    "lodash.debounce": "^4.0.8",
     "react": "16.13.1",
-    "react-native": "0.63.4"
+    "react-native": "0.63.4",
+    "react-native-reanimated": "^1.13.2",
+    "react-native-svg": "^12.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/runtime": "^7.12.5",
     "babel-plugin-module-resolver": "^4.0.0",
-    "metro-react-native-babel-preset": "^0.64.0"
+    "metro-react-native-babel-preset": "^0.64.0",
+    "pod-install": "^0.1.18"
   }
 }
