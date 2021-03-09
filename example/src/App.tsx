@@ -35,7 +35,7 @@ export default function App() {
       )}
       {!tab && (
         <View style={[styles.tab]}>
-          <CctColorPicker value={value} onColorChange={setValue} />
+          <CctColorPicker value={value} onValueChange={setValue} />
           <View style={[styles.demo]}>
             <Text>{value}</Text>
           </View>

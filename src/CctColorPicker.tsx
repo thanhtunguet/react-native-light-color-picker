@@ -90,13 +90,13 @@ export default class CctColorPicker extends Component<
       )(event, state);
     },
     onPanResponderRelease: () => {
-      const { onColorChangeCompleted } = this.props;
+      const { onValueChangeCompleted } = this.props;
       const { colorRef } = this.state;
       if (
-        typeof onColorChangeCompleted === 'function' &&
+        typeof onValueChangeCompleted === 'function' &&
         typeof colorRef.current === 'number'
       ) {
-        onColorChangeCompleted(colorRef.current);
+        onValueChangeCompleted(colorRef.current);
       }
       this.state.animatedValue.flattenOffset();
     },
@@ -151,9 +151,9 @@ export default class CctColorPicker extends Component<
             const v: number = (y / (radius * 2)) * 100;
             const { colorRef } = this.state;
             colorRef.current = v;
-            const { onColorChange } = this.props;
-            if (typeof onColorChange === 'function') {
-              onColorChange(v);
+            const { onValueChange } = this.props;
+            if (typeof onValueChange === 'function') {
+              onValueChange(v);
             }
           });
         }
