@@ -3,7 +3,7 @@ import type { MutableRefObject } from 'react';
 import type { LayoutRectangle } from 'react-native';
 import type { Animated } from 'react-native';
 
-export interface LightColorPickerState {
+export interface CctColorPickerState {
   radius: number;
 
   isCalculated: boolean;
@@ -18,5 +18,5 @@ export interface LightColorPickerState {
 
   animatedValue: Animated.ValueXY;
 
-  colorRef: MutableRefObject<string>;
+  colorRef: MutableRefObject<number>;
 }

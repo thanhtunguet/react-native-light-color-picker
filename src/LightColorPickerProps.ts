@@ -5,5 +5,7 @@ export interface LightColorPickerProps {
 
   onColorChange?(color: string);
 
+  onColorChangeCompleted?(color: string);
+
   thumbStyle?: ViewProps['style'];
 }

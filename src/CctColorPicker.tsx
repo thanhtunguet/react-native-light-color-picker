@@ -1,6 +1,5 @@
-import colorsys from 'colorsys';
-import type { LightColorPickerProps } from 'lib/LightColorPickerProps';
-import type { LightColorPickerState } from 'lib/LightColorPickerState';
+import type { CctColorPickerProps } from 'lib/CctColorPickerProps';
+import type { CctColorPickerState } from 'lib/CctColorPickerState';
 import type { Point } from 'lib/Point';
 import PropTypes from 'prop-types';
 import React, { Component, PropsWithChildren } from 'react';
@@ -15,21 +14,22 @@ import {
   ViewProps,
   ViewStyle,
 } from 'react-native';
-import { styles } from './LightColorPicker.styles';
+import LinearGradient from 'react-native-linear-gradient';
+import { styles } from './CctColorPicker.styles';
 
 /**
- * File: LightColorPicker.tsx
+ * File: CctColorPicker.tsx
  * @created 2021-03-03 08:42:49
  * @author Thanh Tùng <ht@thanhtunguet.info>
  */
-export default class LightColorPicker extends Component<
-  PropsWithChildren<LightColorPickerProps>,
-  LightColorPickerState
+export default class CctColorPicker extends Component<
+  PropsWithChildren<CctColorPickerProps>,
+  CctColorPickerState
 > {
-  public state: LightColorPickerState;
+  public state: CctColorPickerState;
 
-  public static readonly defaultProps: LightColorPickerProps = {
-    color: '#FFFFFF',
+  public static readonly defaultProps: CctColorPickerProps = {
+    value: 0,
   };
 
   public static readonly propTypes = {
@@ -38,7 +38,7 @@ export default class LightColorPicker extends Component<
     onColorChangeCompleted: PropTypes.func,
   };
 
-  constructor(props: LightColorPickerProps) {
+  constructor(props: CctColorPickerProps) {
     super(props);
     this.state = {
       radius: 0,
@@ -67,7 +67,7 @@ export default class LightColorPicker extends Component<
         x: 0,
         y: 0,
       },
-      colorRef: React.createRef<string>(),
+      colorRef: React.createRef<number>(),
     };
     this.state.animatedValue.addListener(this.handleSyncLayout);
   }
@@ -94,7 +94,7 @@ export default class LightColorPicker extends Component<
       const { colorRef } = this.state;
       if (
         typeof onColorChangeCompleted === 'function' &&
-        typeof colorRef.current === 'string'
+        typeof colorRef.current === 'number'
       ) {
         onColorChangeCompleted(colorRef.current);
       }
@@ -108,23 +108,6 @@ export default class LightColorPicker extends Component<
 
   private readonly getHeightOffset = () => {
     return this.state.thumbLayout.height;
-  };
-
-  private readonly handleUpdateColor = (x: number, y: number) => {
-    const { center, radius } = this.state;
-    const dx = x - center.x;
-    const dy = y - center.y;
-    const deg = Math.atan2(dy, dx) * (-180 / Math.PI);
-    const r = Math.min(Math.sqrt(dx * dx + dy * dy), radius);
-    if (r / radius < 0.1) {
-      return '#FFFFFF';
-    }
-    const hsv = {
-      h: deg,
-      s: (100 * r) / radius,
-      v: 100,
-    };
-    return colorsys.hsv2Hex(hsv);
   };
 
   private readonly calculateWheelSize = () => {
@@ -141,14 +124,11 @@ export default class LightColorPicker extends Component<
         x: radius,
         y: radius,
       };
-      const { color } = this.props;
-      if (typeof color === 'string') {
-        if (color.match(/^#([a-zA-Z0-9]{6})$/)) {
-          const { h: deg, s } = colorsys.hex2Hsv(color);
-          const rad = (Math.PI * deg) / 180;
-          const d = (s * radius) / 100;
-          const x = radius + d * Math.cos(rad);
-          const y = radius - d * Math.sin(rad);
+      const { value } = this.props;
+      if (typeof value === 'number') {
+        if (value >= 0 && value <= 1000) {
+          const x = radius;
+          const y = (value / 100) * radius * 2;
           const currentV: Point = {
             x,
             y,
@@ -167,12 +147,13 @@ export default class LightColorPicker extends Component<
           isCalculated: true,
         },
         () => {
-          animatedLayout.addListener(({ x, y }) => {
-            const hexColor: string = this.handleUpdateColor(x, y);
-            this.state.colorRef.current = hexColor;
+          animatedLayout.addListener(({ y }) => {
+            const v: number = (y / (radius * 2)) * 100;
+            const { colorRef } = this.state;
+            colorRef.current = v;
             const { onColorChange } = this.props;
             if (typeof onColorChange === 'function') {
-              onColorChange(hexColor);
+              onColorChange(v);
             }
           });
         }
@@ -280,10 +261,20 @@ export default class LightColorPicker extends Component<
             },
           ]}
         >
-          <Animated.Image
-            style={[styles.wheel]}
-            source={require('./images/color-wheel.png')}
-          />
+          <Animated.View style={[styles.wheel]}>
+            <LinearGradient
+              style={[
+                styles.wheel,
+                {
+                  borderRadius: radius,
+                },
+              ]}
+              colors={['#FCB800', '#FDDB80', '#FFFFFF', '#E2F2FB', '#92CFF1']}
+              locations={[0, 0.2604, 0.5208, 0.7656, 1]}
+              useAngle={true}
+              angle={180}
+            />
+          </Animated.View>
           <Animated.View
             {...this.panResponder.panHandlers}
             style={[

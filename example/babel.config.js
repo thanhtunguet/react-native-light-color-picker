@@ -10,6 +10,7 @@ module.exports = {
       {
         alias: {
           [pak.name]: path.join(__dirname, '..', pak.source),
+          lib: '../src',
         },
       },
     ],

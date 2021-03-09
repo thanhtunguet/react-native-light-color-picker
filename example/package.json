@@ -12,8 +12,11 @@
     "colorsys": "^1.0.22",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-linear-gradient": "^2.5.6",
+    "react-native-paper": "^4.7.2",
     "react-native-reanimated": "^1.13.2",
-    "react-native-svg": "^12.1.0"
+    "react-native-svg": "^12.1.0",
+    "react-native-vector-icons": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

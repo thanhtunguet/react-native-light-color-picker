@@ -1,29 +1,12 @@
 {
   "name": "react-native-light-color-picker",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Light color picker for React Native",
-  "main": "lib/commonjs/index",
-  "module": "lib/module/index",
-  "types": "lib/typescript/src/index.d.ts",
-  "react-native": "src/index",
-  "source": "src/index",
-  "files": [
-    "src",
-    "lib",
-    "android",
-    "ios",
-    "cpp",
-    "react-native-light-color-picker.podspec",
-    "!lib/typescript/example",
-    "!android/build",
-    "!ios/build",
-    "!**/__tests__",
-    "!**/__fixtures__",
-    "!**/__mocks__",
-    "!node_modules",
-    "!.git",
-    "!example"
-  ],
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
   "scripts": {
     "test": "jest",
     "typescript": "tsc --noEmit",
@@ -70,6 +53,7 @@
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-builder-bob": "^0.17.1",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-reanimated": "^1.13.2",
     "react-native-svg": "^12.1.0",
     "release-it": "^14.2.2",
@@ -79,7 +63,8 @@
   "peerDependencies": {
     "colorsys": "^1.0.22",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-linear-gradient": "^2.5.6"
   },
   "jest": {
     "preset": "react-native",
