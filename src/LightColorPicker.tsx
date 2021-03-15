@@ -1,7 +1,7 @@
 import colorsys from 'colorsys';
-import type { LightColorPickerProps } from 'lib/LightColorPickerProps';
-import type { LightColorPickerState } from 'lib/LightColorPickerState';
-import type { Point } from 'lib/Point';
+import type { LightColorPickerProps } from './LightColorPickerProps';
+import type { LightColorPickerState } from './LightColorPickerState';
+import type { Point } from './Point';
 import PropTypes from 'prop-types';
 import React, { Component, PropsWithChildren } from 'react';
 import {

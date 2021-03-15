@@ -1,6 +1,6 @@
-import type { CctColorPickerProps } from 'lib/CctColorPickerProps';
-import type { CctColorPickerState } from 'lib/CctColorPickerState';
-import type { Point } from 'lib/Point';
+import type { CctColorPickerProps } from './CctColorPickerProps';
+import type { CctColorPickerState } from './CctColorPickerState';
+import type { Point } from './Point';
 import PropTypes from 'prop-types';
 import React, { Component, PropsWithChildren } from 'react';
 import {

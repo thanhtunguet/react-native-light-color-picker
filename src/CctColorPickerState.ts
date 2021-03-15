@@ -1,4 +1,4 @@
-import type { Point } from 'lib/Point';
+import type { Point } from './Point';
 import type { MutableRefObject } from 'react';
 import type { LayoutRectangle } from 'react-native';
 import type { Animated } from 'react-native';
