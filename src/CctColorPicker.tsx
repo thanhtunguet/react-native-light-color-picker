@@ -26,17 +26,17 @@ export default class CctColorPicker extends Component<
   PropsWithChildren<CctColorPickerProps>,
   CctColorPickerState
 > {
-  public state: CctColorPickerState;
-
   public static readonly defaultProps: CctColorPickerProps = {
     value: 0,
   };
 
   public static readonly propTypes = {
     color: PropTypes.string,
-    onColorChange: PropTypes.func,
-    onColorChangeCompleted: PropTypes.func,
+    onValueChange: PropTypes.func,
+    onValueChangeCompleted: PropTypes.func,
   };
+
+  public state: CctColorPickerState;
 
   constructor(props: CctColorPickerProps) {
     super(props);

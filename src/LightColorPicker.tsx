@@ -26,8 +26,6 @@ export default class LightColorPicker extends Component<
   PropsWithChildren<LightColorPickerProps>,
   LightColorPickerState
 > {
-  public state: LightColorPickerState;
-
   public static readonly defaultProps: LightColorPickerProps = {
     color: '#FFFFFF',
   };
@@ -37,6 +35,8 @@ export default class LightColorPicker extends Component<
     onColorChange: PropTypes.func,
     onColorChangeCompleted: PropTypes.func,
   };
+
+  public state: LightColorPickerState;
 
   constructor(props: LightColorPickerProps) {
     super(props);
