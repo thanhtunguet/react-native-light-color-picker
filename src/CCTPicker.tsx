@@ -68,13 +68,14 @@ export class CCTPicker extends Picker<number> {
             useAngle={true}
             angle={180}
           />
-          <Thumb
-            {...this.panResponder.panHandlers}
-            style={[this.getLayout(), cctStyles.thumb]}
-            color={this.state.thumbColor || this.getThumbColor()}
-            defaultContrastColor="#000000"
-          />
         </View>
+
+        <Thumb
+          {...this.panResponder.panHandlers}
+          style={[this.getLayout()]}
+          color={this.state.thumbColor || this.getThumbColor()}
+          defaultContrastColor="#000000"
+        />
       </View>
     );
   }
