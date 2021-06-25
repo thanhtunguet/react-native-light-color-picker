@@ -1,6 +1,6 @@
 {
   "name": "react-native-light-color-picker",
-  "version": "1.0.0-rc.7",
+  "version": "1.0.0-rc.8",
   "description": "Light color picker for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

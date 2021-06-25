@@ -45,13 +45,12 @@ export class RGBPicker extends Picker<string> {
           ]}
           source={require('./images/color-wheel.png')}
           resizeMode="contain"
-        >
-          <Thumb
-            {...this.panResponder.panHandlers}
-            style={this.getLayout()}
-            color={this.state.thumbColor || this.getThumbColor()}
-          />
-        </ImageBackground>
+        />
+        <Thumb
+          {...this.panResponder.panHandlers}
+          style={[this.getLayout()]}
+          color={this.state.thumbColor || this.getThumbColor()}
+        />
       </View>
     );
   }
